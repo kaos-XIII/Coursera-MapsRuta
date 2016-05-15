@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapsRuta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dC9-hh-GWq">
+                                <rect key="frame" x="25" y="20" width="330" height="527"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JZV-Bf-0QW">
+                                <rect key="frame" x="25" y="565" width="330" height="29"/>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Satélite"/>
+                                    <segment title="Híbrido"/>
+                                </segments>
+                                <connections>
+                                    <action selector="TipoSatAcction:" destination="BYZ-38-t0r" eventType="valueChanged" id="5Bt-AE-oKx"/>
+                                </connections>
+                            </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-NA-abb">
+                                <rect key="frame" x="231" y="611" width="51" height="31"/>
+                                <connections>
+                                    <action selector="TrackingAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="OQi-xL-bhj"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empezar Tracking:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-xG-16i">
+                                <rect key="frame" x="63" y="616" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JZV-Bf-0QW" firstAttribute="top" secondItem="dC9-hh-GWq" secondAttribute="bottom" constant="18" id="0LZ-Sc-rwA"/>
+                            <constraint firstItem="dC9-hh-GWq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="RdU-Jw-Jw8"/>
+                            <constraint firstItem="Kfc-NA-abb" firstAttribute="leading" secondItem="v0c-xG-16i" secondAttribute="trailing" constant="25" id="ThM-P5-2kg"/>
+                            <constraint firstItem="dC9-hh-GWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="9" id="WaV-pz-37M"/>
+                            <constraint firstItem="v0c-xG-16i" firstAttribute="centerY" secondItem="Kfc-NA-abb" secondAttribute="centerY" id="aMb-gw-TUH"/>
+                            <constraint firstItem="v0c-xG-16i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="47" id="jLo-T2-K4C"/>
+                            <constraint firstItem="Kfc-NA-abb" firstAttribute="top" secondItem="JZV-Bf-0QW" secondAttribute="bottom" constant="18" id="nx2-8r-7t9"/>
+                            <constraint firstItem="dC9-hh-GWq" firstAttribute="leading" secondItem="JZV-Bf-0QW" secondAttribute="leading" id="oI3-30-YBP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Kfc-NA-abb" secondAttribute="bottom" constant="25" id="ooK-IN-mWz"/>
+                            <constraint firstItem="dC9-hh-GWq" firstAttribute="trailing" secondItem="JZV-Bf-0QW" secondAttribute="trailing" id="w0g-cQ-v0g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dC9-hh-GWq" secondAttribute="trailing" constant="4" id="zcx-ME-u7Q"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="MapaMapView" destination="dC9-hh-GWq" id="FXz-5N-aBJ"/>
+                        <outlet property="TipoMapaSegmentControl" destination="JZV-Bf-0QW" id="zoq-UI-Zqu"/>
+                        <outlet property="TrackingSwitch" destination="Kfc-NA-abb" id="3CQ-SB-7us"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="564.5" y="441.5"/>
+        </scene>
+    </scenes>
+</document>
