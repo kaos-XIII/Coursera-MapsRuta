@@ -21,6 +21,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var locationManager: CLLocationManager = CLLocationManager()
     
     let regionRadius: CLLocationDistance = 500
+    var dist : Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         MapaMapView.mapType = MKMapType.Standard
         MapaMapView.setUserTrackingMode(.FollowWithHeading, animated: true)
         MapaMapView.centerCoordinate = MapaMapView.userLocation.coordinate
+        MapaMapView.showsUserLocation = true
         
         let coordinateRegion = MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, regionRadius, regionRadius)
         MapaMapView.setRegion(coordinateRegion, animated: true)
@@ -87,6 +90,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             locationManager.startUpdatingLocation()
             locationManager.startUpdatingHeading()
+            dist = 0
             
         }
         else {
@@ -94,6 +98,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationManager.stopUpdatingLocation()
             locationManager.stopUpdatingHeading()
             MapaMapView.removeAnnotations(MapaMapView.annotations)
+            dist = 0
             
         }
         
@@ -126,7 +131,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         print("Actualizado")
         
-        MapaMapView.centerCoordinate = (manager.location?.coordinate)!
+        MapaMapView.setCenterCoordinate((manager.location?.coordinate)!, animated: true)
 
         if TrackingSwitch.on {
             
@@ -134,9 +139,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let anotacion : MKPointAnnotation = MKPointAnnotation()
             anotacion.coordinate = punto
             anotacion.title = "Lat: \(punto.latitude), Log: \(punto.longitude)"
-            anotacion.subtitle = ""
+            anotacion.subtitle = "\(dist)m"
             MapaMapView.addAnnotation(anotacion)
-           
+            dist += 50
+            
         }
         else {
             
